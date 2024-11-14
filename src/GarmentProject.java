@@ -53,7 +53,50 @@ class Fabric {
         return pricePerMeter * meters;
     }
 }
+class Supplier {
 
+    public String id;
+    public String name;
+    public String contactInfo;
+    List<Fabric> suppliedFabric = new ArrayList<>();
+
+    // Constructor
+    public Supplier(String id, String name, String contactInfo) {
+        this.id = id;
+        this.name = name;
+        this.contactInfo = contactInfo;
+    }
+
+    void addFabric(Fabric fabric) {
+        suppliedFabric.add(fabric);
+    }
+
+    List<Fabric> getSuppliedFabrics() {
+        return suppliedFabric;
+    }
+}
+class Supplier {
+
+    public String id;
+    public String name;
+    public String contactInfo;
+    List<Fabric> suppliedFabric = new ArrayList<>();
+
+    // Constructor
+    public Supplier(String id, String name, String contactInfo) {
+        this.id = id;
+        this.name = name;
+        this.contactInfo = contactInfo;
+    }
+
+    void addFabric(Fabric fabric) {
+        suppliedFabric.add(fabric);
+    }
+
+    List<Fabric> getSuppliedFabrics() {
+        return suppliedFabric;
+    }
+}
 class Customer {
 
     public String customerId;
@@ -137,7 +180,7 @@ public class GarmentProject {
                 case 4 -> viewCustomerOrders();
                 case 5 -> updateGarmentStock();
                 case 6 -> running = false;
-                default -> System.out.println("Invalid option. Please try again.");
+                default -> System.out.println("Invalid option! Please try again.");
             }
         }
         scanner.close();
