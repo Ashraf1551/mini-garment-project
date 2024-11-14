@@ -75,26 +75,42 @@ class Supplier {
         return suppliedFabric;
     }
 }
-class Supplier {
+class Order {
 
-    public String id;
-    public String name;
-    public String contactInfo;
-    List<Fabric> suppliedFabric = new ArrayList<>();
+    public String orderId;
+    public Date orderDate;
+    public List<Garment> garments = new ArrayList<>();
+    private double totalAmount;
 
     // Constructor
-    public Supplier(String id, String name, String contactInfo) {
-        this.id = id;
-        this.name = name;
-        this.contactInfo = contactInfo;
+    public Order(String orderId, Date orderDate) {
+        this.orderId = orderId;
+        this.orderDate = orderDate;
     }
 
-    void addFabric(Fabric fabric) {
-        suppliedFabric.add(fabric);
+    void addGarment(Garment garment) {
+        garments.add(garment);
     }
 
-    List<Fabric> getSuppliedFabrics() {
-        return suppliedFabric;
+    double calculateTotalAmount() {
+        totalAmount = 0;
+        for (Garment g : garments) {
+            totalAmount += g.price;
+        }
+        return totalAmount;
+    }
+
+    void printOrderDetails() {
+        System.out.println("--------------------------");
+        System.out.println("Order Details");
+        System.out.println("--------------------------");
+        for (Garment g : garments) {
+            System.out.println("Name: " + g.name);
+            System.out.println("Price: " + g.price);
+            System.out.println("Description: " + g.description);
+            System.out.println("--------------------------");
+        }
+        System.out.println("Total Amount: " + calculateTotalAmount());
     }
 }
 class Customer {
